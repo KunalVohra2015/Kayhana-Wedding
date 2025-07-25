@@ -11,7 +11,8 @@ function App() {
       title: 'ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ',
       subtitle: 'Kayhana & [Partner\'s Name]',
       content: 'We joyfully invite you to celebrate our union',
-      blessing: 'ਵਾਹਿਗੁਰੂ ਜੀ ਕਾ ਖਾਲਸਾ, ਵਾਹਿਗੁਰੂ ਜੀ ਕੀ ਫਤਿਹ'
+      blessing: 'ਵਾਹਿਗੁਰੂ ਜੀ ਕਾ ਖਾਲਸਾ, ਵਾਹਿਗੁਰੂ ਜੀ ਕੀ ਫਤਿਹ',
+      videoUrl: '/welcome-video.mp4'
     },
     {
       type: 'event',
@@ -101,11 +102,18 @@ function App() {
             <div className="card-content">
               {pages[currentPage].type === 'welcome' && (
                 <div className="welcome-page">
+                  <div className="video-section">
+                    <video 
+                      controls
+                      className="welcome-video"
+                      poster="/video-poster.jpg"
+                    >
+                      <source src={pages[currentPage].videoUrl} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                   <h1 className="greeting">{pages[currentPage].title}</h1>
-                  <div className="ornament">✦</div>
                   <h2 className="couple-names">{pages[currentPage].subtitle}</h2>
-                  <p className="invite-text">{pages[currentPage].content}</p>
-                  <div className="ornament">✦</div>
                   <p className="blessing">{pages[currentPage].blessing}</p>
                 </div>
               )}
