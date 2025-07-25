@@ -752,10 +752,18 @@
 
   .card {
     min-height: 500px;
+    border-width: 5px;
+  }
+
+  .card::before {
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
   }
 
   .card-content {
-    padding: 50px 20px 20px;
+    padding: 60px 30px 30px;
   }
 
   .greeting {
@@ -781,7 +789,7 @@
   }
 
   .card-navigation {
-    padding: 15px 20px;
+    padding: 20px 30px;
   }
 
   .contact-link {
@@ -811,6 +819,26 @@
 
   .envelope-text p {
     font-size: 12px;
+  }
+
+  .card {
+    min-height: 450px;
+    border-width: 4px;
+  }
+
+  .card::before {
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+  }
+
+  .card-content {
+    padding: 50px 20px 25px;
+  }
+
+  .card-navigation {
+    padding: 15px 20px;
   }
 
   .greeting {
