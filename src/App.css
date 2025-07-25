@@ -22,6 +22,214 @@
   pointer-events: none;
 }
 
+/* Golden Fireworks */
+.fireworks-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.firework {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--primary-gold);
+  box-shadow: 0 0 10px var(--primary-gold);
+}
+
+.firework-burst-1 {
+  top: 20%;
+  left: 25%;
+  animation: fireworkBurst1 2s ease-out forwards;
+}
+
+.firework-burst-2 {
+  top: 30%;
+  right: 25%;
+  animation: fireworkBurst2 2.2s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.firework-burst-3 {
+  top: 15%;
+  left: 50%;
+  animation: fireworkBurst3 2.1s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+.firework-burst-4 {
+  top: 35%;
+  left: 70%;
+  animation: fireworkBurst4 1.9s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+.firework-burst-5 {
+  top: 10%;
+  left: 80%;
+  animation: fireworkBurst5 2.3s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes fireworkBurst1 {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+    box-shadow: 0 0 0 0 var(--primary-gold);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 
+      0 0 20px 5px var(--primary-gold),
+      20px 0 10px 2px var(--deep-gold),
+      -20px 0 10px 2px var(--rich-gold),
+      0 20px 10px 2px var(--primary-gold),
+      0 -20px 10px 2px var(--deep-gold),
+      14px 14px 8px 2px var(--rich-gold),
+      -14px -14px 8px 2px var(--primary-gold),
+      14px -14px 8px 2px var(--deep-gold),
+      -14px 14px 8px 2px var(--rich-gold);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+    box-shadow: 
+      0 0 50px 10px transparent,
+      40px 0 20px 4px transparent,
+      -40px 0 20px 4px transparent,
+      0 40px 20px 4px transparent,
+      0 -40px 20px 4px transparent,
+      28px 28px 16px 4px transparent,
+      -28px -28px 16px 4px transparent,
+      28px -28px 16px 4px transparent,
+      -28px 28px 16px 4px transparent;
+  }
+}
+
+@keyframes fireworkBurst2 {
+  0% {
+    opacity: 1;
+    transform: scale(0) rotate(0deg);
+    box-shadow: 0 0 0 0 var(--deep-gold);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.2) rotate(45deg);
+    box-shadow: 
+      0 0 25px 6px var(--deep-gold),
+      25px 0 12px 3px var(--primary-gold),
+      -25px 0 12px 3px var(--rich-gold),
+      0 25px 12px 3px var(--deep-gold),
+      0 -25px 12px 3px var(--primary-gold);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.5) rotate(90deg);
+    box-shadow: 
+      0 0 60px 12px transparent,
+      50px 0 25px 6px transparent,
+      -50px 0 25px 6px transparent,
+      0 50px 25px 6px transparent,
+      0 -50px 25px 6px transparent;
+  }
+}
+
+@keyframes fireworkBurst3 {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+    box-shadow: 0 0 0 0 var(--rich-gold);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.5);
+    box-shadow: 
+      0 0 30px 8px var(--rich-gold),
+      30px 0 15px 4px var(--primary-gold),
+      -30px 0 15px 4px var(--deep-gold),
+      0 30px 15px 4px var(--rich-gold),
+      0 -30px 15px 4px var(--primary-gold),
+      21px 21px 12px 3px var(--deep-gold),
+      -21px -21px 12px 3px var(--rich-gold);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3);
+    box-shadow: 
+      0 0 80px 16px transparent,
+      60px 0 30px 8px transparent,
+      -60px 0 30px 8px transparent,
+      0 60px 30px 8px transparent,
+      0 -60px 30px 8px transparent,
+      42px 42px 24px 6px transparent,
+      -42px -42px 24px 6px transparent;
+  }
+}
+
+@keyframes fireworkBurst4 {
+  0% {
+    opacity: 1;
+    transform: scale(0) rotate(0deg);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.3) rotate(180deg);
+    box-shadow: 
+      0 0 28px 7px var(--primary-gold),
+      28px 0 14px 3px var(--deep-gold),
+      -28px 0 14px 3px var(--rich-gold),
+      0 28px 14px 3px var(--primary-gold),
+      0 -28px 14px 3px var(--deep-gold);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.8) rotate(360deg);
+    box-shadow: 
+      0 0 70px 14px transparent,
+      56px 0 28px 6px transparent,
+      -56px 0 28px 6px transparent,
+      0 56px 28px 6px transparent,
+      0 -56px 28px 6px transparent;
+  }
+}
+
+@keyframes fireworkBurst5 {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 
+      0 0 22px 5px var(--deep-gold),
+      22px 0 11px 2px var(--primary-gold),
+      -22px 0 11px 2px var(--rich-gold),
+      0 22px 11px 2px var(--deep-gold),
+      0 -22px 11px 2px var(--primary-gold),
+      15px 15px 8px 2px var(--rich-gold),
+      -15px -15px 8px 2px var(--deep-gold);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+    box-shadow: 
+      0 0 55px 11px transparent,
+      44px 0 22px 4px transparent,
+      -44px 0 22px 4px transparent,
+      0 44px 22px 4px transparent,
+      0 -44px 22px 4px transparent,
+      30px 30px 16px 4px transparent,
+      -30px -30px 16px 4px transparent;
+  }
+}
+
 /* Envelope Styles */
 .envelope-container {
   cursor: pointer;

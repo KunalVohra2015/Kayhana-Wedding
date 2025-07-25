@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
+  const [showFireworks, setShowFireworks] = useState(false);
 
   const pages = [
     {
@@ -61,6 +62,11 @@ function App() {
 
   const handleEnvelopeClick = () => {
     setIsEnvelopeOpen(true);
+    setShowFireworks(true);
+    // Hide fireworks after animation completes
+    setTimeout(() => {
+      setShowFireworks(false);
+    }, 3500);
   };
 
   const handleNext = () => {
@@ -78,10 +84,22 @@ function App() {
   const handleClose = () => {
     setIsEnvelopeOpen(false);
     setCurrentPage(0);
+    setShowFireworks(false);
   };
 
   return (
     <div className="App">
+      {/* Golden Fireworks */}
+      {showFireworks && (
+        <div className="fireworks-container">
+          <div className="firework firework-burst-1"></div>
+          <div className="firework firework-burst-2"></div>
+          <div className="firework firework-burst-3"></div>
+          <div className="firework firework-burst-4"></div>
+          <div className="firework firework-burst-5"></div>
+        </div>
+      )}
+
       {!isEnvelopeOpen ? (
         <div className="envelope-container" onClick={handleEnvelopeClick}>
           <div className="envelope">
