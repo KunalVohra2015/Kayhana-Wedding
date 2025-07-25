@@ -1,429 +1,468 @@
 .App {
   min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Navigation */
-.wedding-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: linear-gradient(90deg, var(--deep-maroon) 0%, var(--royal-purple) 50%, var(--deep-maroon) 100%);
-  padding: 15px 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.nav-item {
-  background: transparent;
-  border: 2px solid var(--primary-gold);
-  color: var(--primary-gold);
-  padding: 10px 25px;
-  font-family: 'Cinzel', serif;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 25px;
-  position: relative;
-  overflow: hidden;
-}
-
-.nav-item:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--primary-gold);
-  transition: left 0.3s ease;
-  z-index: -1;
-}
-
-.nav-item:hover:before,
-.nav-item.active:before {
-  left: 0;
-}
-
-.nav-item:hover,
-.nav-item.active {
-  color: var(--deep-maroon);
-  transform: translateY(-2px);
-}
-
-/* Main Content */
-.wedding-content {
-  padding-top: 80px;
-  min-height: 100vh;
-}
-
-/* Welcome Section */
-.welcome-section {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, var(--saffron) 0%, var(--deep-gold) 50%, var(--deep-maroon) 100%);
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(135deg, var(--cream) 0%, #FFF5E6 50%, var(--rose-pink) 20%);
+  padding: 20px;
 }
 
-.welcome-section::before {
+/* Envelope Styles */
+.envelope-container {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.envelope-container:hover {
+  transform: scale(1.05);
+}
+
+.envelope {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
+.envelope-flap {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 100px 150px 0 150px;
+  border-color: var(--deep-maroon) transparent transparent transparent;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  transform-origin: top center;
+  transition: transform 0.5s ease;
+}
+
+.envelope-container:hover .envelope-flap {
+  transform: rotateX(-30deg);
+}
+
+.envelope-body {
+  width: 300px;
+  height: 200px;
+  background: linear-gradient(to bottom, var(--deep-maroon) 0%, var(--ruby-red) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--primary-gold);
+  border-top: none;
+}
+
+.envelope-body::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(255, 215, 0, 0.1) 10px,
-    rgba(255, 215, 0, 0.1) 20px
-  );
-  animation: shimmer 20s linear infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(50px, 50px) rotate(360deg); }
-}
-
-.welcome-overlay {
-  position: relative;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  height: 100px;
+  background: var(--cream);
   z-index: 1;
+  border: 3px solid var(--primary-gold);
+  border-bottom: none;
+}
+
+.envelope-text {
+  position: relative;
+  z-index: 2;
   text-align: center;
-  color: white;
-  padding: 40px;
-}
-
-.welcome-title {
-  font-size: 4em;
-  margin-bottom: 20px;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-gold); }
-  to { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 40px var(--primary-gold), 0 0 60px var(--deep-gold); }
-}
-
-.couple-names {
-  font-size: 3em;
-  margin: 20px 0;
   color: var(--primary-gold);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Cinzel', serif;
 }
 
-.welcome-text {
-  font-size: 1.5em;
-  margin-bottom: 40px;
+.envelope-text h2 {
+  font-size: 24px;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.envelope-text p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
   font-style: italic;
 }
 
-.video-container {
-  max-width: 800px;
-  margin: 0 auto;
-  border: 5px solid var(--primary-gold);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.video-container video {
+/* Card Styles */
+.card-container {
   width: 100%;
-  height: auto;
+  max-width: 500px;
+  animation: cardAppear 0.5s ease-out;
 }
 
-/* Invitation Section */
-.invitation-section {
-  min-height: 100vh;
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 5px solid var(--primary-gold);
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--deep-maroon);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--cream) 0%, #FFF5E6 50%, var(--rose-pink) 100%);
-  padding: 40px 20px;
 }
 
-.invitation-card {
-  max-width: 600px;
-  background: white;
-  padding: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-
-.card-border {
-  border: 5px solid var(--primary-gold);
-  padding: 40px;
-  position: relative;
-  background: linear-gradient(45deg, #FFF5E6 25%, transparent 25%, transparent 75%, #FFF5E6 75%, #FFF5E6),
-              linear-gradient(45deg, #FFF5E6 25%, transparent 25%, transparent 75%, #FFF5E6 75%, #FFF5E6);
-  background-size: 30px 30px;
-  background-position: 0 0, 15px 15px;
+.close-btn:hover {
+  background: var(--ruby-red);
+  transform: scale(1.1);
 }
 
 .card-content {
-  background: white;
-  padding: 40px;
+  flex: 1;
+  padding: 60px 40px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, rgba(255, 215, 0, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 215, 0, 0.05) 75%, rgba(255, 215, 0, 0.05)),
+              linear-gradient(45deg, rgba(255, 215, 0, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 215, 0, 0.05) 75%, rgba(255, 215, 0, 0.05));
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+/* Welcome Page */
+.welcome-page {
   text-align: center;
-  position: relative;
+  animation: fadeIn 0.5s ease-out;
 }
 
-.khanda-symbol {
-  font-size: 4em;
-  color: var(--deep-maroon);
-  margin-bottom: 20px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.invitation-title {
+.greeting {
   font-size: 2.5em;
+  color: var(--deep-maroon);
+  margin: 0 0 20px 0;
+  font-family: 'Cinzel', serif;
+}
+
+.ornament {
+  font-size: 2em;
+  color: var(--primary-gold);
+  margin: 20px 0;
+}
+
+.couple-names {
+  font-size: 2em;
   color: var(--royal-purple);
-  margin-bottom: 30px;
-  font-weight: 700;
+  margin: 20px 0;
+  font-family: 'Cinzel', serif;
+}
+
+.invite-text {
+  font-size: 1.2em;
+  color: #333;
+  margin: 20px 0;
+  font-style: italic;
 }
 
 .blessing {
-  font-size: 1.3em;
-  color: var(--deep-maroon);
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.invite-message {
-  font-size: 1.2em;
-  line-height: 1.8;
-  color: #333;
-  margin-bottom: 30px;
-}
-
-.bride-groom {
-  font-size: 2.5em;
-  color: var(--royal-purple);
-  margin: 30px 0;
-  line-height: 1.3;
-}
-
-.bride-groom .with {
-  color: var(--primary-gold);
-  font-size: 0.8em;
-}
-
-.date {
-  font-size: 1.5em;
+  font-size: 1.1em;
   color: var(--deep-maroon);
   font-weight: 600;
   margin-top: 30px;
 }
 
-/* Events Section */
-.events-section {
-  min-height: 100vh;
-  padding: 80px 20px;
-  background: linear-gradient(180deg, var(--sapphire-blue) 0%, var(--royal-purple) 100%);
-  color: white;
-}
-
-.section-title {
-  font-size: 3em;
+/* Event Page */
+.event-page {
   text-align: center;
-  margin-bottom: 60px;
-  color: var(--primary-gold);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.5s ease-out;
 }
 
-.events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.event-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 2px solid var(--primary-gold);
-  border-radius: 15px;
-  padding: 30px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.event-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-}
-
-.event-card h3 {
-  font-size: 1.8em;
-  color: var(--primary-gold);
+.event-icon {
+  font-size: 4em;
   margin-bottom: 20px;
+  animation: bounce 1s ease-in-out;
 }
 
-.event-date,
-.event-time,
-.event-venue {
-  font-size: 1.2em;
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.event-title {
+  font-size: 2.2em;
+  color: var(--royal-purple);
+  margin: 0 0 30px 0;
+  font-family: 'Cinzel', serif;
+}
+
+.event-details p {
   margin: 10px 0;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.event-date {
+  font-weight: 700;
+  color: var(--deep-maroon) !important;
+  font-size: 1.3em !important;
+}
+
+.event-time {
+  color: var(--sapphire-blue) !important;
+  font-weight: 600;
+}
+
+.event-venue {
+  color: var(--emerald-green) !important;
+  font-weight: 600;
 }
 
 .event-description {
   font-style: italic;
-  margin-top: 20px;
-  color: var(--cream);
+  color: #666 !important;
+  margin-top: 20px !important;
 }
 
-/* Venue Section */
-.venue-section {
-  min-height: 100vh;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, var(--emerald-green) 0%, var(--saffron) 100%);
-}
-
-.venue-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.venue-card {
-  background: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+/* RSVP Page */
+.rsvp-page {
   text-align: center;
-  border: 3px solid var(--primary-gold);
+  animation: fadeIn 0.5s ease-out;
 }
 
-.venue-card h3 {
-  font-size: 2em;
-  color: var(--deep-maroon);
-  margin-bottom: 20px;
+.rsvp-title {
+  font-size: 2.5em;
+  color: var(--royal-purple);
+  margin: 0 0 20px 0;
+  font-family: 'Cinzel', serif;
 }
 
-.venue-card p {
+.rsvp-content {
   font-size: 1.2em;
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
-.directions-btn {
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.contact-link {
+  display: inline-block;
+  padding: 15px 30px;
+  background: linear-gradient(90deg, var(--deep-maroon) 0%, var(--royal-purple) 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.thank-you {
+  margin-top: 40px;
+}
+
+.thank-you p {
+  font-size: 1.1em;
+  color: #666;
+  font-style: italic;
+}
+
+.khanda {
+  font-size: 2em;
+  color: var(--deep-maroon);
+  margin-top: 20px;
+}
+
+/* Navigation */
+.card-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.05);
+  border-top: 2px solid var(--primary-gold);
+}
+
+.nav-button {
   background: var(--royal-purple);
   color: white;
   border: none;
-  padding: 15px 40px;
-  font-size: 1.1em;
-  border-radius: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Cinzel', serif;
-  font-weight: 600;
-}
-
-.directions-btn:hover {
-  background: var(--deep-maroon);
-  transform: scale(1.05);
-}
-
-/* RSVP Section */
-.rsvp-section {
-  min-height: 100vh;
-  padding: 80px 20px;
-  background: linear-gradient(180deg, var(--ruby-red) 0%, var(--rose-pink) 100%);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.rsvp-form {
-  max-width: 500px;
-  width: 100%;
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border: 3px solid var(--primary-gold);
+.nav-button:hover:not(:disabled) {
+  background: var(--deep-maroon);
+  transform: scale(1.1);
 }
 
-.rsvp-form input,
-.rsvp-form select,
-.rsvp-form textarea {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 2px solid var(--primary-gold);
-  border-radius: 10px;
-  font-size: 1.1em;
-  font-family: 'Playfair Display', serif;
+.nav-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
-.rsvp-form input:focus,
-.rsvp-form select:focus,
-.rsvp-form textarea:focus {
-  outline: none;
-  border-color: var(--royal-purple);
-  box-shadow: 0 0 10px rgba(102, 51, 153, 0.3);
+.page-indicator {
+  display: flex;
+  gap: 10px;
 }
 
-.submit-btn {
-  width: 100%;
-  padding: 18px;
-  background: linear-gradient(90deg, var(--deep-maroon) 0%, var(--royal-purple) 100%);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  font-size: 1.3em;
-  font-family: 'Cinzel', serif;
-  font-weight: 700;
-  cursor: pointer;
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ddd;
   transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
-.submit-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+.dot.active {
+  background: var(--primary-gold);
+  transform: scale(1.3);
 }
 
-/* Responsive Design */
+/* Mobile Responsive */
 @media (max-width: 768px) {
-  .welcome-title {
-    font-size: 2.5em;
+  .envelope {
+    width: 250px;
+    height: 167px;
   }
-  
+
+  .envelope-flap {
+    border-width: 83px 125px 0 125px;
+  }
+
+  .envelope-body {
+    width: 250px;
+    height: 167px;
+  }
+
+  .envelope-text h2 {
+    font-size: 20px;
+  }
+
+  .card {
+    min-height: 500px;
+  }
+
+  .card-content {
+    padding: 50px 20px 20px;
+  }
+
+  .greeting {
+    font-size: 2em;
+  }
+
   .couple-names {
+    font-size: 1.5em;
+  }
+
+  .event-title {
+    font-size: 1.8em;
+  }
+
+  .rsvp-title {
     font-size: 2em;
   }
-  
-  .section-title {
-    font-size: 2em;
+
+  .nav-button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
   }
-  
-  .nav-item {
-    font-size: 14px;
-    padding: 8px 20px;
+
+  .card-navigation {
+    padding: 15px 20px;
   }
-  
-  .wedding-nav {
-    padding: 10px;
+
+  .contact-link {
+    font-size: 1em;
+    padding: 12px 25px;
   }
-  
-  .events-grid,
-  .venue-grid {
-    grid-template-columns: 1fr;
+}
+
+@media (max-width: 480px) {
+  .envelope {
+    width: 200px;
+    height: 133px;
+  }
+
+  .envelope-flap {
+    border-width: 67px 100px 0 100px;
+  }
+
+  .envelope-body {
+    width: 200px;
+    height: 133px;
+  }
+
+  .envelope-text h2 {
+    font-size: 18px;
+  }
+
+  .envelope-text p {
+    font-size: 12px;
+  }
+
+  .greeting {
+    font-size: 1.8em;
+  }
+
+  .couple-names {
+    font-size: 1.3em;
+  }
+
+  .event-title {
+    font-size: 1.5em;
+  }
+
+  .event-icon {
+    font-size: 3em;
+  }
+
+  .close-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
   }
 }
