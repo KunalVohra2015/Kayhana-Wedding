@@ -102,6 +102,10 @@ function App() {
             <div className="card-content">
               {pages[currentPage].type === 'welcome' && (
                 <div className="welcome-page">
+                  <h1 className="greeting">{pages[currentPage].title}</h1>
+                  <div className="ornament">✦</div>
+                  <h2 className="couple-names">{pages[currentPage].subtitle}</h2>
+                  <p className="blessing">{pages[currentPage].blessing}</p>
                   <div className="video-section">
                     <video 
                       controls
@@ -112,9 +116,6 @@ function App() {
                       Your browser does not support the video tag.
                     </video>
                   </div>
-                  <h1 className="greeting">{pages[currentPage].title}</h1>
-                  <h2 className="couple-names">{pages[currentPage].subtitle}</h2>
-                  <p className="blessing">{pages[currentPage].blessing}</p>
                 </div>
               )}
 
