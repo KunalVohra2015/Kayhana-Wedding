@@ -1,38 +1,429 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Navigation */
+.wedding-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, var(--deep-maroon) 0%, var(--royal-purple) 50%, var(--deep-maroon) 100%);
+  padding: 15px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  background: transparent;
+  border: 2px solid var(--primary-gold);
+  color: var(--primary-gold);
+  padding: 10px 25px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-gold);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.nav-item:hover:before,
+.nav-item.active:before {
+  left: 0;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--deep-maroon);
+  transform: translateY(-2px);
+}
+
+/* Main Content */
+.wedding-content {
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+/* Welcome Section */
+.welcome-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, var(--saffron) 0%, var(--deep-gold) 50%, var(--deep-maroon) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 215, 0, 0.1) 10px,
+    rgba(255, 215, 0, 0.1) 20px
+  );
+  animation: shimmer 20s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(50px, 50px) rotate(360deg); }
+}
+
+.welcome-overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  padding: 40px;
+}
+
+.welcome-title {
+  font-size: 4em;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-gold); }
+  to { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 40px var(--primary-gold), 0 0 60px var(--deep-gold); }
+}
+
+.couple-names {
+  font-size: 3em;
+  margin: 20px 0;
+  color: var(--primary-gold);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-text {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  font-style: italic;
+}
+
+.video-container {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 5px solid var(--primary-gold);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+}
+
+/* Invitation Section */
+.invitation-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--cream) 0%, #FFF5E6 50%, var(--rose-pink) 100%);
+  padding: 40px 20px;
+}
+
+.invitation-card {
+  max-width: 600px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.card-border {
+  border: 5px solid var(--primary-gold);
+  padding: 40px;
+  position: relative;
+  background: linear-gradient(45deg, #FFF5E6 25%, transparent 25%, transparent 75%, #FFF5E6 75%, #FFF5E6),
+              linear-gradient(45deg, #FFF5E6 25%, transparent 25%, transparent 75%, #FFF5E6 75%, #FFF5E6);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.card-content {
+  background: white;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+}
+
+.khanda-symbol {
+  font-size: 4em;
+  color: var(--deep-maroon);
+  margin-bottom: 20px;
+}
+
+.invitation-title {
+  font-size: 2.5em;
+  color: var(--royal-purple);
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.blessing {
+  font-size: 1.3em;
+  color: var(--deep-maroon);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.invite-message {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.bride-groom {
+  font-size: 2.5em;
+  color: var(--royal-purple);
+  margin: 30px 0;
+  line-height: 1.3;
+}
+
+.bride-groom .with {
+  color: var(--primary-gold);
+  font-size: 0.8em;
+}
+
+.date {
+  font-size: 1.5em;
+  color: var(--deep-maroon);
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+/* Events Section */
+.events-section {
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, var(--sapphire-blue) 0%, var(--royal-purple) 100%);
+  color: white;
+}
+
+.section-title {
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 60px;
+  color: var(--primary-gold);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--primary-gold);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.event-card h3 {
+  font-size: 1.8em;
+  color: var(--primary-gold);
+  margin-bottom: 20px;
+}
+
+.event-date,
+.event-time,
+.event-venue {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.event-description {
+  font-style: italic;
+  margin-top: 20px;
+  color: var(--cream);
+}
+
+/* Venue Section */
+.venue-section {
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--emerald-green) 0%, var(--saffron) 100%);
+}
+
+.venue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.venue-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: 3px solid var(--primary-gold);
+}
+
+.venue-card h3 {
+  font-size: 2em;
+  color: var(--deep-maroon);
+  margin-bottom: 20px;
+}
+
+.venue-card p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.directions-btn {
+  background: var(--royal-purple);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1em;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+}
+
+.directions-btn:hover {
+  background: var(--deep-maroon);
+  transform: scale(1.05);
+}
+
+/* RSVP Section */
+.rsvp-section {
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, var(--ruby-red) 0%, var(--rose-pink) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.rsvp-form {
+  max-width: 500px;
+  width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 3px solid var(--primary-gold);
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 2px solid var(--primary-gold);
+  border-radius: 10px;
+  font-size: 1.1em;
+  font-family: 'Playfair Display', serif;
+}
+
+.rsvp-form input:focus,
+.rsvp-form select:focus,
+.rsvp-form textarea:focus {
+  outline: none;
+  border-color: var(--royal-purple);
+  box-shadow: 0 0 10px rgba(102, 51, 153, 0.3);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(90deg, var(--deep-maroon) 0%, var(--royal-purple) 100%);
   color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.3em;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.App-link {
-  color: #61dafb;
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Responsive Design */
+@media (max-width: 768px) {
+  .welcome-title {
+    font-size: 2.5em;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .couple-names {
+    font-size: 2em;
+  }
+  
+  .section-title {
+    font-size: 2em;
+  }
+  
+  .nav-item {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+  
+  .wedding-nav {
+    padding: 10px;
+  }
+  
+  .events-grid,
+  .venue-grid {
+    grid-template-columns: 1fr;
   }
 }
