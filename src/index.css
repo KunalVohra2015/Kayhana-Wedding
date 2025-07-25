@@ -1,14 +1,16 @@
 :root {
   --primary-gold: #FFD700;
-  --deep-gold: #FFA500;
-  --royal-purple: #663399;
+  --deep-gold: #B8860B;
+  --rich-gold: #DAA520;
+  --antique-gold: #CD7F32;
+  --royal-purple: #4B0082;
   --deep-maroon: #800020;
-  --saffron: #FF9933;
-  --emerald-green: #50C878;
-  --ruby-red: #E0115F;
-  --sapphire-blue: #0F52BA;
-  --cream: #FFFDD0;
-  --rose-pink: #FF69B4;
+  --burgundy: #722F37;
+  --champagne: #F7E7CE;
+  --ivory: #FFFFF0;
+  --bronze: #CD7F32;
+  --royal-blue: #002366;
+  --midnight-blue: #191970;
 }
 
 * {
@@ -22,7 +24,7 @@ body {
   font-family: 'Playfair Display', 'Georgia', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, var(--cream) 0%, #FFF5E6 100%);
+  background: linear-gradient(135deg, var(--champagne) 0%, var(--ivory) 50%, #FFF8DC 100%);
   min-height: 100vh;
   overflow-x: hidden;
 }
