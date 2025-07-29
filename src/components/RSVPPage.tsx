@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Heart, ExternalLink, ArrowLeft } from 'lucide-react';
 
 interface RSVPPageProps {

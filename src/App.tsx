@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Envelope } from './components/Envelope';
 import { SingleCard } from './components/SingleCard';
 import { CardNavigation } from './components/CardNavigation';
 import { RSVPPage } from './components/RSVPPage';
-import invitationCard1 from 'figma:asset/fe03530eb12a37eb466ef3492a044f350f71185d.png';
-import invitationCard2 from 'figma:asset/f88fd3440f8e0f126fd3e03d749b2e376251497f.png';
-import invitationCard3 from 'figma:asset/363f4640450b46c0e261299465711f72fd13a0fe.png';
-import invitationCard4 from 'figma:asset/e28565e451f0d87365139e8dbfbc214afd3e7683.png';
+// Import placeholder images - replace these with your actual wedding images
+const invitationCard1 = '/images/sangeet.png';
+const invitationCard2 = '/images/haldi.png';
+const invitationCard3 = '/images/wedding-ceremony.png';
+const invitationCard4 = '/images/reception.png';
 
 // Wedding invitation cards data
 const cardData = [
